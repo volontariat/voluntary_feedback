@@ -105,13 +105,13 @@ GIT
       rake
 
 PATH
-  remote: .
+  remote: /Users/gawlim/workspace/voluntary/voluntary_feedback
   specs:
     voluntary_feedback (0.0.1)
       voluntary (~> 0.5.1)
 
 GEM
-  remote: https://rubygems.org/
+  remote: http://gems.github.com/
   specs:
     actionmailer (4.2.4)
       actionpack (= 4.2.4)

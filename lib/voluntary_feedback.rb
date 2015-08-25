@@ -1,4 +1,6 @@
-require "voluntary_feedback/engine"
+require 'voluntary'
+
+require 'voluntary_feedback/engine'
 
 module VoluntaryFeedback
 end
