@@ -88,6 +88,36 @@ ActiveRecord::Schema.define(version: 20150825160838) do
   add_index "comments", ["ancestry"], name: "index_comments_on_ancestry", using: :btree
   add_index "comments", ["commentable_id", "commentable_type"], name: "index_comments_on_commentable_id_and_commentable_type", using: :btree
 
+  create_table "communities", force: :cascade do |t|
+    t.integer  "organization_id", limit: 4
+    t.string   "name",            limit: 255
+    t.string   "slug",            limit: 255
+    t.text     "text",            limit: 65535
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "communities", ["organization_id"], name: "index_communities_on_organization_id", using: :btree
+  add_index "communities", ["slug"], name: "index_communities_on_slug", unique: true, using: :btree
+
+  create_table "feedbacks", force: :cascade do |t|
+    t.integer  "community_id",   limit: 4
+    t.string   "feedback_type",  limit: 255
+    t.integer  "user_id",        limit: 4
+    t.string   "name",           limit: 255
+    t.string   "slug",           limit: 255
+    t.text     "text",           limit: 65535
+    t.integer  "mood_type",      limit: 4
+    t.string   "mood_text",      limit: 255
+    t.integer  "likes_count",    limit: 4
+    t.integer  "dislikes_count", limit: 4
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "feedbacks", ["community_id", "feedback_type"], name: "index_feedbacks_on_community_id_and_feedback_type", using: :btree
+  add_index "feedbacks", ["community_id", "slug"], name: "index_feedbacks_on_community_id_and_slug", unique: true, using: :btree
+
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",           limit: 255, null: false
     t.integer  "sluggable_id",   limit: 4,   null: false
@@ -184,6 +214,18 @@ ActiveRecord::Schema.define(version: 20150825160838) do
   add_index "projects_users", ["project_id", "user_id"], name: "index_projects_users_on_project_id_and_user_id", unique: true, using: :btree
   add_index "projects_users", ["project_id"], name: "index_projects_users_on_project_id", using: :btree
   add_index "projects_users", ["user_id"], name: "index_projects_users_on_user_id", using: :btree
+
+  create_table "replies", force: :cascade do |t|
+    t.integer "feedback_id",    limit: 4
+    t.integer "reply_id",       limit: 4
+    t.integer "user_id",        limit: 4
+    t.text    "text",           limit: 65535
+    t.integer "likes_count",    limit: 4
+    t.integer "dislikes_count", limit: 4
+  end
+
+  add_index "replies", ["feedback_id"], name: "index_replies_on_feedback_id", using: :btree
+  add_index "replies", ["reply_id"], name: "index_replies_on_reply_id", using: :btree
 
   create_table "things", force: :cascade do |t|
     t.string   "name",       limit: 255
