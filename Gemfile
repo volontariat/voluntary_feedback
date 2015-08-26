@@ -5,7 +5,7 @@ source 'https://rubygems.org'
 # development dependencies will be added by default to the :development group.
 gemspec
 
-gem 'voluntary', github: 'volontariat/voluntary'
+gem 'voluntary', github: 'volontariat/voluntary' #path: '../voluntary'
 gem 'voluntary-ember_js', github: 'volontariat/voluntary-ember_js'
 
 # core
