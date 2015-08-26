@@ -1,0 +1,2 @@
+Volontariat.NewCommunityController = Volontariat.Controller.extend(Volontariat.CommunityPersistence
+)

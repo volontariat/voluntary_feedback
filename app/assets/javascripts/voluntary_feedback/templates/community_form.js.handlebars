@@ -1,0 +1,29 @@
+<form class="simple_form form-vertical" novalidate="novalidate" id="new_community" action="/" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="S/2IhDP+fivIazYOP45n9nH1UZWIMjh5KEY4j7M4k5zmohHqb50iEp5uZWrgYGqbYhxYEfB9ZGEjc4ahrXu9uw==" />
+  <div class="form-group select required community_organization_id">
+    <label class="select required control-label control-label" for="community_organization_id">
+      <abbr title="required">*</abbr> {{t 'activerecord.models.organization'}}
+    </label>
+    <select class="select required form-control" name="community[organization_id]" id="community_organization_id">
+{{#each organizations as |organization|}}
+      <option value="{{organization.id}}">{{organization.name}}</option>
+{{/each}}
+    </select>
+  </div>
+  <div class="form-group string required community_name">
+    <label class="string required control-label control-label" for="community_name">
+      <abbr title="required">*</abbr> {{t 'attributes.name'}}
+    </label>
+    {{input value=name class="string required form-control" type="text" name="community[name]" id="community_name"}}
+  </div>  
+  <div class="form-group text required community_text">
+    <label class="text required control-label control-label" for="community_text">
+      {{t 'attributes.text'}}
+    </label>
+    {{textarea value=text style="width: 500px; height:300px;" class="text required form-control" name="community[text]" id="community_text"}}
+  </div>
+{{#if slug}}
+  <input type="submit" name="commit" value="{{t 'communities.update.title' true }}" class="btn btn-default" {{action 'save'}}/>
+{{else}}
+  <input type="submit" name="commit" value="{{t 'communities.create.title' true }}" class="btn btn-default" {{action 'save'}}/>
+{{/if}}
+</form>

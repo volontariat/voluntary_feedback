@@ -1,0 +1,32 @@
+<h2>{{t 'communities.index.title'}}</h2>
+
+{{#if anyItems}}
+<table class="table table-striped" style="margin-top:15px;">
+  <tbody>
+  {{#each model as |community|}}
+    <tr>
+      <td>
+        {{#link-to 'community' community.slug}}{{community.name}}{{/link-to}}
+      </td>
+      <td>
+        {{#link-to 'edit_community' community.slug}}
+          <span class="glyphicon glyphicon-pencil"></span> {{t 'general.edit'}}
+        {{/link-to}}
+         | 
+        <a {{action 'destroy' community.slug}} class="remove_community_link">
+          <span class="glyphicon glyphicon-remove"></span> {{t 'general.remove'}}
+        </a>
+      </td>
+    </tr>
+  {{/each}}
+  </tbody>
+</table>
+{{else}}
+  {{t 'communities.index.empty_collection'}}
+{{/if}}
+
+{{partial 'shared/pagination'}}
+
+{{#link-to 'new_community'}}
+  <span class="glyphicon glyphicon-plus"></span> {{t 'communities.new.title'}}
+{{/link-to}}

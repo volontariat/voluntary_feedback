@@ -19,34 +19,15 @@ module NavigationHelpers
     # authentication
     when /^the sign in page$/
       new_user_session_path  
-      
-    # areas  
-    when /the areas page/
-      areas_path
     
-    when /the area page/
-      area_path(@area)
+    when /the communities page/
+      "/products/feedback#/communities/page/1"  
       
-    when /the edit area page/
-      edit_area_path(@area)
+    when /the new community page/
+      "/products/feedback#/communities/new"  
 
-    # product
-    when /the product page/
-      product_path(@product)
-      
-    when /the edit product page/
-      edit_product_path(@product)
-
-    # projects
-    when /the project page/
-      project_path(@project)
-      
-    when /the edit project page/
-      edit_project_path(@project)
-      
-    # stories
-    when /the new project story page/
-      new_project_story_path(@project)
+    when /the community edit page/
+      "/products/feedback#/communities/#{Community.last.slug}/edit"  
       
     # workflow
     when /the workflow page/

@@ -1,0 +1,28 @@
+<div class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <a id="plattform_brand" class="navbar-brand" href="/">Volontari.at /</a>
+    <a id="product_brand" class="navbar-brand" href="#">Brainstorming</a>
+    
+    <ul class="navbar-nav nav">
+      {{#link-to 'communities' 1 tagName='li'}}<a>{{t 'communities.index.title'}}</a>{{/link-to}}
+{{#if currentUser}}
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+          {{t 'general.account'}}
+          <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+          <li>
+            <a {{action 'signOut'}}>{{t 'general.sign_out'}}</a>
+          </li>
+        </ul>
+      </li>
+{{else}}
+      <li>
+        <a href="/users/sign_in">{{t 'general.authentication'}}</a>
+      </li>
+{{/if}}    
+      <li><a href="http://GitHub.com/Volontariat/voluntary_feedback/issues">{{t 'general.issues' }}</a></li>    
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,27 @@
+en:
+  communities:
+    index:
+      title: Communities
+      empty_collection: No communities found.
+    new:
+      title: New Community
+    edit:
+      title: Edit Community
+    save:
+      failed: Something went wrong at saving community
+      successful: Successfully saved community.
+        
+    create:
+      title: Create Community
+    update:
+      title: Update Community
+    destroy:
+      confirmation: Do you really want to remove this community?
+        
+  activerecord:
+    errors:
+      models:
+        community:
+          attributes:
+            base: 
+              deletion_failed: Community could not be deleted!
