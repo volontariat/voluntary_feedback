@@ -16,4 +16,10 @@ end
 
 FactoryGirl.define do
   Voluntary::Test::RspecHelpers::Factories.code.call(self)
+  
+  factory :community do
+    association :organization
+    sequence(:name) { |n| "Community #{n}" }
+    sequence(:text) { |n| "Text #{n}" }
+  end
 end

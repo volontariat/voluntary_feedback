@@ -17,7 +17,7 @@ Volontariat.CommunityPersistence = Em.Mixin.create
         if data.errors
           Volontariat.alert 'danger', "#{Volontariat.t('communities.save.failed')}: #{JSON.stringify(data.errors)}"
         else
-          @transitionToRoute 'community', data.community.slug
+          @transitionToRoute 'community.feedbacks', data.community.slug, 1
           Volontariat.alert 'success', Volontariat.t('communities.save.successful')
       ).fail((data) =>
         Volontariat.alert 'danger', "#{Volontariat.t('communities.save.failed')}!"

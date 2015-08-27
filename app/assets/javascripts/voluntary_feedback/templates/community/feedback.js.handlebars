@@ -1,0 +1,17 @@
+<h2>
+  {{model.name}} 
+  {{#link-to 'community.edit_feedback' communitySlug model.slug class='edit_feedback_link'}}
+    <span class="glyphicon glyphicon-pencil"></span>
+  {{/link-to}}
+  <a {{action 'destroy' model.slug}} class="remove_feedback_link">
+    <span class="glyphicon glyphicon-remove"></span>
+  </a>
+</h2>
+
+<p>
+  <strong>{{model.user_name}}:</strong> {{mood-icon model.mood_type}} {{model.mood_text}}
+</p>
+
+<p>
+  {{model.text}}
+</p>

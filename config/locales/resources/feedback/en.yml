@@ -1,0 +1,41 @@
+en:
+  feedbacks:
+    index:
+      title: Feedbacks
+      empty_collection: No feedbacks found.
+    new:
+      title: New Feedback
+    edit:
+      title: Edit Feedback
+    save:
+      failed: Something went wrong at saving feedback
+      successful: Successfully saved feedback.
+        
+    create:
+      title: Create Feedback
+    show:
+      feedback: Feedback
+      problem: Problem
+      question: Question
+      idea: Idea
+      praise: Praise
+      announcement: Announcement
+    
+    update:
+      title: Update Feedback
+    destroy:
+      confirmation: Do you really want to remove this feedback?
+        
+  activerecord:
+    attributes:
+      feedback:
+        name: Title
+        feedback_type: Feedback type
+        mood_type: Mood type
+        mood_text: Mood description
+    errors:
+      models:
+        feedback:
+          attributes:
+            base: 
+              deletion_failed: Feedback could not be deleted!

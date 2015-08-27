@@ -1,0 +1,40 @@
+<ul class="nav nav-pills" style="padding-bottom:15px;">
+  {{#link-to 'community.feedbacks' communitySlug 1 tagName="li"}}<a href="{{view.href}}">{{t 'communities.show.all'}}</a>{{/link-to}}
+  {{#link-to 'community.problems' communitySlug 1 tagName="li"}}<a href="{{view.href}}">{{t 'communities.show.problems'}}</a>{{/link-to}}
+  {{#link-to 'community.questions' communitySlug 1 tagName="li"}}<a href="{{view.href}}">{{t 'communities.show.questions'}}</a>{{/link-to}}
+  {{#link-to 'community.ideas' communitySlug 1 tagName="li"}}<a href="{{view.href}}">{{t 'communities.show.ideas'}}</a>{{/link-to}}
+  {{#link-to 'community.praises' communitySlug 1 tagName="li"}}<a href="{{view.href}}">{{t 'communities.show.praises'}}</a>{{/link-to}}
+  {{#link-to 'community.announcements' communitySlug 1 tagName="li"}}<a href="{{view.href}}">{{t 'communities.show.announcements'}}</a>{{/link-to}}
+</ul>
+
+{{#if anyItems}}
+<table class="table table-striped" style="margin-top:15px;">
+  <tbody>
+  {{#each model as |feedback|}}
+    <tr>
+      <td>{{feedback.feedbackType}}</td>
+      <td>
+        {{#link-to 'community.feedback' communitySlug feedback.slug 1}}{{feedback.name}}{{/link-to}}
+      </td>
+      <td>
+        {{#link-to 'community.edit_feedback' communitySlug feedback.slug class='edit_feedback_link'}}
+          <span class="glyphicon glyphicon-pencil"></span> {{t 'general.edit'}}
+        {{/link-to}}
+         | 
+        <a {{action 'destroy' communitySlug feedback.slug}} class="remove_feedback_link">
+          <span class="glyphicon glyphicon-remove"></span> {{t 'general.remove'}}
+        </a>
+      </td>
+    </tr>
+  {{/each}}
+  </tbody>
+</table>
+{{else}}
+  {{t 'feedbacks.index.empty_collection'}}
+{{/if}}
+
+{{partial 'shared/pagination'}}
+
+{{#link-to 'community.new_feedback' communitySlug class='new_feedback_link'}}
+  <span class="glyphicon glyphicon-plus"></span> {{t 'feedbacks.new.title'}}
+{{/link-to}}

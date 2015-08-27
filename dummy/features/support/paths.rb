@@ -26,6 +26,9 @@ module NavigationHelpers
     when /the new community page/
       "/products/feedback#/communities/new"  
 
+    when /the community page/
+      "/products/feedback#/communities/#{Community.last.slug}/feedbacks/page/1"  
+
     when /the community edit page/
       "/products/feedback#/communities/#{Community.last.slug}/edit"  
       

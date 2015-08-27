@@ -6,7 +6,7 @@
   {{#each model as |community|}}
     <tr>
       <td>
-        {{#link-to 'community' community.slug}}{{community.name}}{{/link-to}}
+        {{#link-to 'community.feedbacks' community.slug 1}}{{community.name}}{{/link-to}}
       </td>
       <td>
         {{#link-to 'edit_community' community.slug}}

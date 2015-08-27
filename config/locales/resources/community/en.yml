@@ -13,6 +13,15 @@ en:
         
     create:
       title: Create Community
+    show:
+      all: All
+      feedbacks: Feedbacks
+      problems: Problems
+      questions: Questions
+      ideas: Ideas
+      praises: Praises
+      announcements: Announcements
+    
     update:
       title: Update Community
     destroy:

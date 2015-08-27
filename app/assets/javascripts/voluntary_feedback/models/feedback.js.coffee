@@ -1,0 +1,12 @@
+Volontariat.Feedback = DS.Model.extend
+  feedbackType: DS.attr('string')
+  userId: DS.attr('number')
+  userName: DS.attr('string')
+  userSlug: DS.attr('string')
+  slug: DS.attr('string')
+  name: DS.attr('string')
+  text: DS.attr('string')
+  moodType: DS.attr('number')
+  moodText: DS.attr('string')
+  likesCount: DS.attr('number')
+  dislikesCount: DS.attr('number')

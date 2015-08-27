@@ -1,0 +1,2 @@
+Volontariat.CommunityEditFeedbackController = Volontariat.Controller.extend(Volontariat.FeedbackPersistence
+)

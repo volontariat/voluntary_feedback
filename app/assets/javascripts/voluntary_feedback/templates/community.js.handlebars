@@ -1,5 +1,5 @@
 <h2>
-  {{model.name}} 
+  {{#link-to 'community.feedbacks' model.slug 1}}{{model.name}}{{/link-to}}
   {{#link-to 'edit_community' model.slug}}
     <span class="glyphicon glyphicon-pencil"></span>
   {{/link-to}}
@@ -7,3 +7,5 @@
     <span class="glyphicon glyphicon-remove"></span>
   </a>
 </h2>
+
+{{outlet}}
