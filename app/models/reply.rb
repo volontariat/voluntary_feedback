@@ -9,4 +9,6 @@ class Reply < ActiveRecord::Base
   validates :text, presence: true
   
   attr_accessible :text
+  
+  attr_accessor :positive
 end

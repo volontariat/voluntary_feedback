@@ -17,6 +17,8 @@
   {{model.text}}
 </p>
 
+{{like-or-dislike targetType='Feedback' targetId=model.id positive=model.positive likes=model.likes_count dislikes=model.dislikes_count}}
+
 <h3>{{t 'replies.index.title'}}</h3>
 
 <table class="table">
@@ -30,6 +32,8 @@
       <td></td>
       <td>
         {{reply-cell userId=reply.user_id feedbackId=model.id feedbackSlug=model.slug selectedId=replyId id=reply.id text=reply.text editAction='editReply' leaveEditReplyModeAction='leaveEditReplyMode' reloadAction='reload'}}
+        <br/>
+        {{like-or-dislike targetType='Reply' targetId=reply.id positive=reply.positive likes=reply.likes_count dislikes=reply.dislikes_count}}
       </td>
     </tr>
     <tr>

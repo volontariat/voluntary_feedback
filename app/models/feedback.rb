@@ -15,4 +15,6 @@ class Feedback < ActiveRecord::Base
   friendly_id :name, use: :scoped, scope: :community
   
   attr_accessible :community_id, :feedback_type, :name, :text, :mood_type, :mood_text
+  
+  attr_accessor :positive
 end

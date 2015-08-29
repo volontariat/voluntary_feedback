@@ -24,9 +24,15 @@ class Voluntary::Api::V1::FeedbacksController < ActionController::Base
   end
   
   def show
+    resource = Community.friendly.find(params[:community_slug]).feedbacks.friendly.find(params[:id])
+    
+    if current_user
+      resource.positive = Feedback.likes_or_dislikes_for(current_user, [resource.id])[resource.id].try(:positive)
+    end
+      
     respond_to do |format|
       format.json do
-        render json: Community.friendly.find(params[:community_slug]).feedbacks.friendly.find(params[:id])
+        render json: resource
       end
     end
   end

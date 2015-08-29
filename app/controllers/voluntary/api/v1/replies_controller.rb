@@ -5,15 +5,27 @@ class Voluntary::Api::V1::RepliesController < ActionController::Base
   
   def index
     options = {}
-  
-    options[:json] = Feedback.find(params[:feedback_id]).replies.includes(:user).paginate page: params[:page], per_page: 10
+    collection = Feedback.find(params[:feedback_id]).replies.includes(:user).paginate page: params[:page], per_page: 10
     
     options[:meta] = { 
       pagination: {
-        total_pages: options[:json].total_pages, current_page: options[:json].current_page,
-        previous_page: options[:json].previous_page, next_page: options[:json].next_page
+        total_pages: collection.total_pages, current_page: collection.current_page,
+        previous_page: collection.previous_page, next_page: collection.next_page
       }
     }
+    
+    collection = collection.to_a
+    
+    if current_user
+      likes = Reply.likes_or_dislikes_for(current_user, collection.map(&:id))
+      
+      collection.map! do |reply|
+        reply.positive = likes[reply.id].try(:positive)
+        reply
+      end
+    end
+
+    options[:json] = collection
     
     respond_with do |format|
       format.json { render options }
