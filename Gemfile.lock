@@ -19,7 +19,7 @@ GIT
 
 GIT
   remote: git://github.com/volontariat/voluntary.git
-  revision: 645810ab8a817593d2ee93e1e832798d2a737e4b
+  revision: b2505c8bbbcbbe9f50605a524bb2b4a2621f635d
   specs:
     voluntary (0.5.1)
       active_model_serializers (~> 0.9.3)
