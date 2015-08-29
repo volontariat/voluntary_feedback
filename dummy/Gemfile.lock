@@ -9,7 +9,7 @@ GIT
 
 GIT
   remote: git://github.com/volontariat/voluntary-ember_js.git
-  revision: 5343811ba0bdaa9c0c4991ca25cdb957ef685814
+  revision: 0e3e6515b5e1622a8ceb9408069b41913c49262f
   specs:
     voluntary-ember_js (0.0.2)
       ember-data-source (= 1.13.8)
@@ -132,7 +132,7 @@ GEM
       erubis (~> 2.7.0)
       rails-dom-testing (~> 1.0, >= 1.0.5)
       rails-html-sanitizer (~> 1.0, >= 1.0.2)
-    active-model-adapter-source (1.13.6)
+    active-model-adapter-source (2.0.0)
       ember-data-source (>= 1.13, < 3.0)
     active_model_serializers (0.9.3)
       activemodel (>= 3.2)
@@ -248,7 +248,7 @@ GEM
     ember-handlebars-template (0.4.1)
       barber (>= 0.9.0)
       sprockets (>= 3.3, < 3.4)
-    ember-rails (0.19.1)
+    ember-rails (0.19.2)
       active-model-adapter-source (>= 1.13.0)
       active_model_serializers
       ember-data-source (>= 1.13.0)
@@ -353,8 +353,6 @@ GEM
     libwebsocket (0.1.8)
       addressable
       websocket
-    linecache (0.46)
-      rbx-require-relative (> 0.0.4)
     listen (1.3.1)
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9)
@@ -479,7 +477,6 @@ GEM
       ffi (>= 0.5.0)
     rb-kqueue (0.2.4)
       ffi (>= 0.5.0)
-    rbx-require-relative (0.0.9)
     rdiscount (2.1.8)
     recaptcha (0.4.0)
     redcarpet (3.2.3)
@@ -622,7 +619,6 @@ DEPENDENCIES
   jasmine!
   launchy (~> 2.1.2)
   letter_opener (~> 1.0.0)
-  linecache (= 0.46)
   mysql2 (~> 0.3.13)
   oink (~> 0.10.1)
   pry-byebug (~> 3.1.0)

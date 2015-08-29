@@ -9,7 +9,7 @@ GIT
 
 GIT
   remote: git://github.com/volontariat/voluntary-ember_js.git
-  revision: 5343811ba0bdaa9c0c4991ca25cdb957ef685814
+  revision: 0e3e6515b5e1622a8ceb9408069b41913c49262f
   specs:
     voluntary-ember_js (0.0.2)
       ember-data-source (= 1.13.8)
@@ -132,7 +132,7 @@ GEM
       erubis (~> 2.7.0)
       rails-dom-testing (~> 1.0, >= 1.0.5)
       rails-html-sanitizer (~> 1.0, >= 1.0.2)
-    active-model-adapter-source (1.13.6)
+    active-model-adapter-source (2.0.0)
       ember-data-source (>= 1.13, < 3.0)
     active_model_serializers (0.9.3)
       activemodel (>= 3.2)
@@ -248,7 +248,7 @@ GEM
     ember-handlebars-template (0.4.1)
       barber (>= 0.9.0)
       sprockets (>= 3.3, < 3.4)
-    ember-rails (0.19.1)
+    ember-rails (0.19.2)
       active-model-adapter-source (>= 1.13.0)
       active_model_serializers
       ember-data-source (>= 1.13.0)
