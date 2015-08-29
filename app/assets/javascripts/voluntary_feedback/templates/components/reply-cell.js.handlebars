@@ -1,0 +1,34 @@
+{{#if editMode}}
+  <form class="simple_form form-vertical" novalidate="novalidate" accept-charset="UTF-8">
+    <div class="form-group text required reply_text">
+      <label class="text required control-label control-label" for="reply_text">
+        <abbr title="required">*</abbr> {{t 'attributes.text'}}
+      </label>
+      {{textarea value=text class="text required form-control" name="reply[text]" id="reply_text"}}
+    </div>
+    
+    <p></p>
+    
+    <input type="submit" name="commit" value="{{t 'general.cancel' true}}" class="btn btn-default" {{action 'cancel'}}/>  
+    
+  {{#if id}}
+    <input type="submit" name="commit" value="{{t 'replies.update.title' true }}" class="btn btn-default" {{action 'save'}}/>
+  {{else}}
+    <input type="submit" name="commit" value="{{t 'replies.create.title' true }}" class="btn btn-default" {{action 'save'}}/>
+  {{/if}}
+  </form>
+{{else}}
+  {{#if id}}
+    {{text}}
+    
+    {{#if your}}
+      <a {{action 'edit'}} class="edit_reply_link">
+        <span class="glyphicon glyphicon-pencil"></span> {{t 'general.edit'}}
+      </a>
+       | 
+      <a {{action 'destroy'}} class="remove_reply_link">
+        <span class="glyphicon glyphicon-remove"></span> {{t 'general.remove'}}
+      </a>
+    {{/if}}
+  {{/if}}
+{{/if}}

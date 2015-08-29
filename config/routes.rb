@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :communities, only: [:index, :create, :show, :update, :destroy]
       resources :feedbacks, only: [:index, :create, :show, :update, :destroy]
+      resources :replies, only: [:index, :create, :show, :update, :destroy]
     end
   end
 end

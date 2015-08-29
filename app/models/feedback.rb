@@ -5,6 +5,8 @@ class Feedback < ActiveRecord::Base
   belongs_to :community
   belongs_to :user
   
+  has_many :replies
+  
   validates :community_id, presence: true
   validates :name, presence: true, uniqueness: { scope: :community_id }
   validates :text, presence: true

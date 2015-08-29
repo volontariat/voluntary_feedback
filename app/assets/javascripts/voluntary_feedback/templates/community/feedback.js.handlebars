@@ -1,4 +1,5 @@
 <h2>
+  {{#link-to feedbackTypeRoute communitySlug 1}}{{model.feedback_type}}:{{/link-to}}
   {{model.name}} 
   {{#link-to 'community.edit_feedback' communitySlug model.slug class='edit_feedback_link'}}
     <span class="glyphicon glyphicon-pencil"></span>
@@ -15,3 +16,48 @@
 <p>
   {{model.text}}
 </p>
+
+<h3>{{t 'replies.index.title'}}</h3>
+
+<table class="table">
+{{#if anyReplies}}
+  {{#each replies as |reply|}}
+    <tr>
+      <td style="width:150px;">{{reply.user_name}}</td>
+      <td style="text-align:right;">{{formatted-datetime reply.created_at}}</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>
+        {{reply-cell userId=reply.user_id feedbackId=model.id feedbackSlug=model.slug selectedId=replyId id=reply.id text=reply.text editAction='editReply' leaveEditReplyModeAction='leaveEditReplyMode' reloadAction='reload'}}
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <hr style="margin-top:10px; margin-bottom:10px;"/>
+      </td>
+    </tr>
+  {{/each}}
+{{else}}
+  <tr>
+    <td colspan="2">
+      {{t 'replies.index.empty_collection'}}
+    </td>
+  </tr>
+{{/if}}
+
+{{#if newReplyMode}}
+  <tr>
+    <td style="width:150px;"></td>
+    <td>
+      {{reply-cell feedbackId=model.id reloadAction='reload' leaveNewReplyModeAction='leaveNewReplyMode'}}
+    </td>
+  </tr>
+{{/if}}
+</table>
+
+<a class="new_reply_link" {{action 'newReply'}}>
+  <span class="glyphicon glyphicon-plus"></span> {{t 'replies.new.title' }}
+</a>
+
+{{partial 'shared/pagination'}}

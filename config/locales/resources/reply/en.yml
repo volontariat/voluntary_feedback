@@ -1,0 +1,29 @@
+en:
+  replies:
+    index:
+      title: Replies
+      empty_collection: No replies found.
+    new:
+      title: New Reply
+    edit:
+      title: Edit Reply
+    save:
+      failed: Something went wrong at saving reply
+      successful: Successfully saved reply.
+        
+    create:
+      title: Create Reply
+    
+    update:
+      title: Update Reply
+    destroy:
+      confirmation: Do you really want to remove this reply?
+        
+  activerecord:
+
+    errors:
+      models:
+        reply:
+          attributes:
+            base: 
+              deletion_failed: Reply could not be deleted!

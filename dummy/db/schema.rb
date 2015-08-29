@@ -216,12 +216,14 @@ ActiveRecord::Schema.define(version: 20150825160838) do
   add_index "projects_users", ["user_id"], name: "index_projects_users_on_user_id", using: :btree
 
   create_table "replies", force: :cascade do |t|
-    t.integer "feedback_id",    limit: 4
-    t.integer "reply_id",       limit: 4
-    t.integer "user_id",        limit: 4
-    t.text    "text",           limit: 65535
-    t.integer "likes_count",    limit: 4
-    t.integer "dislikes_count", limit: 4
+    t.integer  "feedback_id",    limit: 4
+    t.integer  "reply_id",       limit: 4
+    t.integer  "user_id",        limit: 4
+    t.text     "text",           limit: 65535
+    t.integer  "likes_count",    limit: 4
+    t.integer  "dislikes_count", limit: 4
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "replies", ["feedback_id"], name: "index_replies_on_feedback_id", using: :btree

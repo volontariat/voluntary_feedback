@@ -40,6 +40,7 @@ class AddFeedbackProduct < ActiveRecord::Migration
       t.text :text
       t.integer :likes_count
       t.integer :dislikes_count
+      t.timestamps
     end
     
     add_index :replies, :feedback_id

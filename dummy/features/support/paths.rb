@@ -20,6 +20,7 @@ module NavigationHelpers
     when /^the sign in page$/
       new_user_session_path  
     
+    # feedback
     when /the communities page/
       "/products/feedback#/communities/page/1"  
       
@@ -31,6 +32,9 @@ module NavigationHelpers
 
     when /the community edit page/
       "/products/feedback#/communities/#{Community.last.slug}/edit"  
+    
+    when /the feedback page/
+      "/products/feedback#/communities/#{@community.slug}/feedbacks/#{@feedback.slug}/page/1"
       
     # workflow
     when /the workflow page/

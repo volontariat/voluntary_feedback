@@ -22,4 +22,12 @@ FactoryGirl.define do
     sequence(:name) { |n| "Community #{n}" }
     sequence(:text) { |n| "Text #{n}" }
   end
+  
+  factory :feedback do
+    association :community
+    association :user
+    feedback_type 'Problem'
+    sequence(:name) { |n| "Feedback #{n}" }
+    sequence(:text) { |n| "Text #{n}" }
+  end
 end
