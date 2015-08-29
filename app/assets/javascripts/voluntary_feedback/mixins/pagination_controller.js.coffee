@@ -10,8 +10,15 @@ Volontariat.PaginationController = Em.Mixin.create
 
   _goToPage: (page) ->
     page = parseInt(page)
-    @set('page', page)
-    @set('totalPages', (@get('metadata') || @store.metadataFor(@get('paginationResource'))).pagination.total_pages)
+    @set 'page', page
+      
+    if @get('metadata')
+      @set 'totalPages', @get('metadata').pagination.total_pages
+    else if @store.metadataFor(@get('paginationResource')).pagination
+      @set 'totalPages', @store.metadataFor(@get('paginationResource')).pagination.total_pages
+    else
+      @set 'totalPages', 1
+      
     pages = []; i = page - 4
     
     while i <= page
@@ -36,8 +43,10 @@ Volontariat.PaginationController = Em.Mixin.create
       @_goToPage(page)
 
       switch @get('paginationRoute')
-        when 'user_brainstormings'
-          @transitionToRoute @get('paginationRoute'), @get('userName'), page
-    
+        when 'community.feedbacks', 'community.problems', 'community.questions', 'community.ideas', 'community.praises', 'community.announcements'
+          @transitionToRoute @get('paginationRoute'), @get('communitySlug'), page
+        when 'community.feedback'
+          @transitionToRoute @get('paginationRoute'), @get('communitySlug'), @get('slug'), page
+        
     goToPageWithoutRedirect: (page) ->
       @_goToPage(page)
