@@ -3,6 +3,7 @@ Volontariat.CommunityFeedbacksRoute = Ember.Route.extend
   
   model: (params) ->
     feedbackType = @get('routeName').split('.')[1]
+    @controllerFor('community.feedbacks').set 'feedbackType', feedbackType.singularize().capitalize()
     @controllerFor('community.feedbacks').set 'paginationRoute', "community.#{feedbackType}"
     @controllerFor('community.feedbacks').set 'page', parseInt(params.page)
     @controllerFor('community.feedbacks').set 'communitySlug', @modelFor('community').slug
