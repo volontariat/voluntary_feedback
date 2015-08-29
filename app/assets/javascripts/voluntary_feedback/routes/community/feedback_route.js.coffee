@@ -11,7 +11,14 @@ Volontariat.CommunityFeedbackRoute = Ember.Route.extend
         "/api/v1/replies?feedback_id=#{json.feedback.id}&page=#{params.page}"
       ).then (replyJson) =>
         @controllerFor('community.feedback').set 'metadata', replyJson.meta
-        @controllerFor('community.feedback').set 'replies', replyJson.replies
+        
+        replies = $.map replyJson.replies, (reply, i) ->
+          reply.replies = $.map reply.replies, (subReply, i) ->
+            subReply.reply
+            
+          reply
+        
+        @controllerFor('community.feedback').set 'replies', replies
         @controllerFor('community.feedback').send 'goToPageWithoutRedirect', parseInt(params.page)
       
       json.feedback

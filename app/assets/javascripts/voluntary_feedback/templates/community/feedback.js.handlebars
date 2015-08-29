@@ -30,10 +30,11 @@
     </tr>
     <tr>
       <td></td>
-      <td>
+      <td class="reply_text">
         {{reply-cell userId=reply.user_id feedbackId=model.id feedbackSlug=model.slug selectedId=replyId id=reply.id text=reply.text editAction='editReply' leaveEditReplyModeAction='leaveEditReplyMode' reloadAction='reload'}}
         <br/>
         {{like-or-dislike targetType='Reply' targetId=reply.id positive=reply.positive likes=reply.likes_count dislikes=reply.dislikes_count}}
+        {{reply-comments replyId=reply.id selectedReplyId=replyId collection=reply.replies editAction='editReply' leaveEditReplyModeAction='leaveEditReplyMode' reloadAction='reload'}}
       </td>
     </tr>
     <tr>

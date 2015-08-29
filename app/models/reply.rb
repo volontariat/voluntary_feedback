@@ -3,8 +3,10 @@ class Reply < ActiveRecord::Base
   
   belongs_to :feedback
   belongs_to :user
+  belongs_to :reply
   
-  validates :feedback_id, presence: true
+  has_many :replies
+  
   validates :user_id, presence: true
   validates :text, presence: true
   

@@ -1,0 +1,27 @@
+<a {{action 'add'}}>{{t 'activerecord.models.comment'}}</a>
+
+<table class="table">
+  {{#if new}}
+    <tr>
+      <td style="width:150px; padding-top:15px;"></td>
+      <td style="padding-top:15px;">
+        {{reply-cell replyId=replyId reloadAction='reload' leaveNewReplyModeAction='leaveNewReplyCommentMode'}}
+      </td>
+    </tr>
+  {{/if}}
+
+  {{#each collection as |reply|}}
+    <tr>
+      <td style="width:150px; padding-top:15px;">{{reply.user_name}}</td>
+      <td style="text-align:right; padding-top:15px;">{{formatted-datetime reply.created_at}}</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td class="reply_text">
+        {{reply-cell userId=reply.user_id replyId=replyId selectedId=selectedReplyId id=reply.id text=reply.text editAction='editReply' leaveEditReplyModeAction='leaveEditReplyMode' reloadAction='reload'}}
+        <br/>
+        {{like-or-dislike targetType='Reply' targetId=reply.id positive=reply.positive likes=reply.likes_count dislikes=reply.dislikes_count}}
+      </td>
+    </tr>
+  {{/each}}
+</table>

@@ -41,7 +41,12 @@ class Voluntary::Api::V1::RepliesController < ActionController::Base
   end
   
   def create
-    resource = Feedback.find(params[:reply][:feedback_id]).replies.new params[:reply]
+    resource = if params[:reply][:feedback_id]
+      Feedback.find(params[:reply][:feedback_id]).replies.new params[:reply]
+    elsif params[:reply][:reply_id]
+      Reply.find(params[:reply][:reply_id]).replies.new params[:reply]
+    end
+    
     resource.user_id = current_user.id
     resource.save
     

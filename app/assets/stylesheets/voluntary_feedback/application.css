@@ -11,3 +11,5 @@
  *= require voluntary/ember_js/application
  *= require_self
  */
+
+.reply_text .ember-view { display:inline; }

@@ -21,5 +21,5 @@ Volontariat.CommunityFeedbackController = Volontariat.Controller.extend(Volontar
     
     reload: ->
       @transitionToRoute 'no_data'
-      @transitionToRoute 'community.feedback', @get('communitySlug'), @get('slug'), 1
+      @transitionToRoute 'community.feedback', @get('communitySlug'), @get('slug'), @get('page')
 )

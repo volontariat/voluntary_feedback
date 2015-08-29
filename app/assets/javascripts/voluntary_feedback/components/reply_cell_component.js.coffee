@@ -18,7 +18,7 @@ Volontariat.ReplyCellComponent = Ember.Component.extend
         type: if @get('id') then 'PUT' else 'POST'
         url: '/api/v1/replies' + if @get('id') then "/#{@get('id')}" else '', 
         data: { 
-          reply: { feedback_id: @get('feedbackId'), text: $('#reply_text').val() } 
+          reply: { feedback_id: @get('feedbackId'), reply_id: @get('replyId'), text: $('#reply_text').val() } 
         }
       ).success((data) =>
         if data.errors
