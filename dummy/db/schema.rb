@@ -100,6 +100,25 @@ ActiveRecord::Schema.define(version: 20150825160838) do
   add_index "communities", ["organization_id"], name: "index_communities_on_organization_id", using: :btree
   add_index "communities", ["slug"], name: "index_communities_on_slug", unique: true, using: :btree
 
+  create_table "community_categories", force: :cascade do |t|
+    t.integer  "community_id",    limit: 4
+    t.string   "name",            limit: 255
+    t.string   "slug",            limit: 255
+    t.integer  "feedbacks_count", limit: 4,   default: 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "community_categories", ["community_id", "slug"], name: "index_community_categories_on_community_id_and_slug", unique: true, using: :btree
+
+  create_table "community_category_feedbacks", force: :cascade do |t|
+    t.integer "category_id", limit: 4
+    t.integer "feedback_id", limit: 4
+  end
+
+  add_index "community_category_feedbacks", ["category_id"], name: "index_community_category_feedbacks_on_category_id", using: :btree
+  add_index "community_category_feedbacks", ["feedback_id"], name: "index_community_category_feedbacks_on_feedback_id", using: :btree
+
   create_table "feedbacks", force: :cascade do |t|
     t.integer  "community_id",   limit: 4
     t.string   "feedback_type",  limit: 255

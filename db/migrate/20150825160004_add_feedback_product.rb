@@ -16,6 +16,24 @@ class AddFeedbackProduct < ActiveRecord::Migration
     add_index :communities, :organization_id
     add_index :communities, :slug, unique: true
     
+    create_table :community_categories, force: true do |t|
+      t.integer :community_id
+      t.string :name
+      t.string :slug
+      t.integer :feedbacks_count, default: 0
+      t.timestamps
+    end
+    
+    add_index :community_categories, [:community_id, :slug], unique: true
+    
+    create_table :community_category_feedbacks, force: true do |t|
+      t.integer :category_id
+      t.integer :feedback_id
+    end
+    
+    add_index :community_category_feedbacks, :category_id
+    add_index :community_category_feedbacks, :feedback_id
+    
     create_table :feedbacks, force:  true do |t|
       t.integer :community_id
       t.string :feedback_type
@@ -53,6 +71,8 @@ class AddFeedbackProduct < ActiveRecord::Migration
     end
     
     drop_table :communities
+    drop_table :community_categories
+    drop_table :community_category_feedbacks
     drop_table :feedbacks
     drop_table :replies
   end
