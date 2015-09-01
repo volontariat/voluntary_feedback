@@ -3,6 +3,7 @@ class Community < ActiveRecord::Base
   
   belongs_to :organization
   
+  has_many :categories, class_name: 'CommunityCategory'
   has_many :feedbacks
   
   validates :organization_id, presence: true
