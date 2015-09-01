@@ -14,3 +14,16 @@ Volontariat.CommunityEditFeedbackRoute = Ember.Route.extend
         unless json.feedback.mood_type == null
           $('input[name="feedback[mood_type]"][value="' + json.feedback.mood_type + '"]').click()
       ), 100
+      
+    Ember.$.getJSON(
+      "/api/v1/community_categories.json?community_slug=#{@modelFor('community').slug}"
+    ).then (json) =>
+      @controllerFor('community.edit_feedback').set 'categories', json.community_categories
+      
+      Ember.$.getJSON(
+        "/api/v1/community_categories.json?community_slug=#{@modelFor('community').slug}&feedback_slug=#{params.feedback_slug}"
+      ).then (json) =>
+        setTimeout (->
+          jQuery.each json.community_categories, (i, category) ->
+            $("input[name='category_ids[]'][value='#{category.id}']").click()
+        ), 100

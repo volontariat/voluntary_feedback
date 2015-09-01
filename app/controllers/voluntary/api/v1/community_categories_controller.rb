@@ -7,7 +7,14 @@ class Voluntary::Api::V1::CommunityCategoriesController < ActionController::Base
     options = {}
   
     community = Community.friendly.find(params[:community_slug])
-    options[:json] = community.categories.paginate page: params[:page], per_page: 10
+    
+    collection = if params[:feedback_slug] 
+      community.feedbacks.friendly.find(params[:feedback_slug]).categories
+    else  
+      community.categories
+    end
+    
+    options[:json] = collection.paginate page: params[:page], per_page: params[:feedback_slug] ? 50 : 10
     
     options[:meta] = { 
       pagination: {

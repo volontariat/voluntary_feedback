@@ -70,6 +70,16 @@
     </div>
   </fieldset>
   
+  <div class="form-group string optional feedback_categories">
+    <label class="string optional control-label control-label" for="feedback_categories">
+      {{t 'community_categories.index.title'}}
+    </label>
+    &nbsp;&nbsp;
+{{#each categories as |category|}}
+    <input type="checkbox" name="category_ids[]" value="{{category.id}}"/> {{category.name}}
+{{/each}}
+  </div>
+  
   <p></p>
   
 {{#if slug}}

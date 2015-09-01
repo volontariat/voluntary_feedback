@@ -1,7 +1,13 @@
 Volontariat.FeedbackPersistence = Em.Mixin.create
+  categories: []
+  
   actions:
     
     save: ->
+      categoryIds = jQuery.map($('input[name="category_ids[]"]:checked'), (categoryField) ->
+        $(categoryField).val()
+      )
+        
       $.ajax(
         type: if @get('slug') then 'PUT' else 'POST'
         url: '/api/v1/feedbacks' + if @get('slug') then "/#{@get('slug')}" else '', 
@@ -9,7 +15,8 @@ Volontariat.FeedbackPersistence = Em.Mixin.create
           feedback: { 
             community_slug: @get('communitySlug'), feedback_type: $('#feedback_feedback_type').val()
             name: $('#feedback_name').val(), text: $('#feedback_text').val(),
-            mood_type: $('input[name="feedback[mood_type]"]:checked').val(), mood_text: $('#feedback_mood_text').val()
+            mood_type: $('input[name="feedback[mood_type]"]:checked').val(), mood_text: $('#feedback_mood_text').val(),
+            category_ids: categoryIds
           } 
         }
       ).success((data) =>
