@@ -1,11 +1,24 @@
-<h2>
-  {{#link-to 'community.feedbacks' model.slug 1}}{{model.name}}{{/link-to}}
-  {{#link-to 'edit_community' model.slug}}
-    <span class="glyphicon glyphicon-pencil"></span>
-  {{/link-to}}
-  <a {{action 'destroy' model.slug}}>
-    <span class="glyphicon glyphicon-remove"></span>
-  </a>
-</h2>
+<nav class="navbar navbar-default">
+  <div class="container-fluid" style="padding-top:0px;">
+    <div class="navbar-header" style="white-space:nowrap;">
+      <span class="navbar-brand">
+        {{#link-to 'community.feedbacks' model.slug 1}}{{model.name}}{{/link-to}}
+        {{#link-to 'edit_community' model.slug}}
+          <span class="glyphicon glyphicon-pencil"></span>
+        {{/link-to}}
+        <a {{action 'destroy' model.slug}}>
+          <span class="glyphicon glyphicon-remove"></span>
+        </a>
+      </span>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        {{#link-to 'community.categories' model.slug 1 tagName='li'}}
+          <a>{{t 'community_categories.index.title'}}</a>
+        {{/link-to}}
+      </ul>
+    </div>
+  </div>
+</nav>
 
 {{outlet}}

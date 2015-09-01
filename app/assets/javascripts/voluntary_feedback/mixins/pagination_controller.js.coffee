@@ -43,8 +43,12 @@ Volontariat.PaginationController = Em.Mixin.create
       @_goToPage(page)
 
       switch @get('paginationRoute')
+        when 'community.categories'
+          @transitionToRoute @get('paginationRoute'), @get('communitySlug'), page
         when 'community.feedbacks', 'community.problems', 'community.questions', 'community.ideas', 'community.praises', 'community.announcements'
           @transitionToRoute @get('paginationRoute'), @get('communitySlug'), page
+        when 'community.category.feedbacks', 'community.category.problems', 'community.category.questions', 'community.category.ideas', 'community.category.praises', 'community.category.announcements'
+          @transitionToRoute @get('paginationRoute'), @get('communitySlug'), @get('categorySlug'), page
         when 'community.feedback'
           @transitionToRoute @get('paginationRoute'), @get('communitySlug'), @get('slug'), page
         

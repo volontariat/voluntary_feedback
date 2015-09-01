@@ -1,0 +1,32 @@
+<h2>{{t 'community_categories.index.title'}}</h2>
+
+{{#if anyItems}}
+<table class="table table-striped" style="margin-top:15px;">
+  <tbody>
+  {{#each model as |category|}}
+    <tr>
+      <td>
+        {{#link-to 'community.category.feedbacks' communitySlug category.slug 1}}{{category.name}}{{/link-to}}
+      </td>
+      <td>
+        {{#link-to 'community.edit_category' communitySlug category.slug}}
+          <span class="glyphicon glyphicon-pencil"></span> {{t 'general.edit'}}
+        {{/link-to}}
+         | 
+        <a {{action 'destroy' category.slug}} class="remove_category_link">
+          <span class="glyphicon glyphicon-remove"></span> {{t 'general.remove'}}
+        </a>
+      </td>
+    </tr>
+  {{/each}}
+  </tbody>
+</table>
+{{else}}
+  {{t 'community_categories.index.empty_collection'}}
+{{/if}}
+
+{{partial 'shared/pagination'}}
+
+{{#link-to 'community.new_category'}}
+  <span class="glyphicon glyphicon-plus"></span> {{t 'community_categories.new.title'}}
+{{/link-to}}

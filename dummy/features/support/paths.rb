@@ -30,6 +30,15 @@ module NavigationHelpers
     when /the community page/
       "/products/feedback#/communities/#{Community.last.slug}/feedbacks/page/1"  
 
+    when /the community categories page/
+      "/products/feedback#/communities/#{@community.slug}/categories/page/1"
+
+    when /the new community category page/
+      "/products/feedback#/communities/#{@community.slug}/categories/new"
+
+    when /the community category edit page/
+      "/products/feedback#/communities/#{@community.slug}/categories/#{CommunityCategory.last.slug}/edit"
+
     when /the community edit page/
       "/products/feedback#/communities/#{Community.last.slug}/edit"  
     

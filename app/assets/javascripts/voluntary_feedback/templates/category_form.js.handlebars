@@ -1,0 +1,13 @@
+<form class="simple_form form-vertical" novalidate="novalidate" accept-charset="UTF-8" method="post">
+  <div class="form-group string required community_category_name">
+    <label class="string required control-label control-label" for="community_category_name">
+      <abbr title="required">*</abbr> {{t 'attributes.name'}}
+    </label>
+    {{input value=name class="string required form-control" type="text" name="community_category[name]" id="community_category_name"}}
+  </div>
+{{#if categorySlug}}
+  <input type="submit" name="commit" value="{{t 'community_categories.update.title' true }}" class="btn btn-default" {{action 'save'}}/>
+{{else}}
+  <input type="submit" name="commit" value="{{t 'community_categories.create.title' true }}" class="btn btn-default" {{action 'save'}}/>
+{{/if}}
+</form>

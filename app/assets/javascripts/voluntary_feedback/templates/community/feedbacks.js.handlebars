@@ -1,10 +1,19 @@
 <ul class="nav nav-pills" style="padding-bottom:15px;">
+{{#if categorySlug}}
+  {{#link-to 'community.category.feedbacks' communitySlug categorySlug 1 tagName="li" class=feedbackClass}}<a href="{{view.href}}">{{t 'communities.show.all'}}</a>{{/link-to}}
+  {{#link-to 'community.category.problems' communitySlug categorySlug 1 tagName="li" class=problemClass}}<a href="{{view.href}}">{{t 'communities.show.problems'}}</a>{{/link-to}}
+  {{#link-to 'community.category.questions' communitySlug categorySlug 1 tagName="li" class=questionClass}}<a href="{{view.href}}">{{t 'communities.show.questions'}}</a>{{/link-to}}
+  {{#link-to 'community.category.ideas' communitySlug categorySlug 1 tagName="li" class=ideaClass}}<a href="{{view.href}}">{{t 'communities.show.ideas'}}</a>{{/link-to}}
+  {{#link-to 'community.category.praises' communitySlug categorySlug 1 tagName="li" class=praiseClass}}<a href="{{view.href}}">{{t 'communities.show.praises'}}</a>{{/link-to}}
+  {{#link-to 'community.category.announcements' communitySlug categorySlug 1 tagName="li" class=announcementClass}}<a href="{{view.href}}">{{t 'communities.show.announcements'}}</a>{{/link-to}}
+{{else}}
   {{#link-to 'community.feedbacks' communitySlug 1 tagName="li" class=feedbackClass}}<a href="{{view.href}}">{{t 'communities.show.all'}}</a>{{/link-to}}
   {{#link-to 'community.problems' communitySlug 1 tagName="li" class=problemClass}}<a href="{{view.href}}">{{t 'communities.show.problems'}}</a>{{/link-to}}
   {{#link-to 'community.questions' communitySlug 1 tagName="li" class=questionClass}}<a href="{{view.href}}">{{t 'communities.show.questions'}}</a>{{/link-to}}
   {{#link-to 'community.ideas' communitySlug 1 tagName="li" class=ideaClass}}<a href="{{view.href}}">{{t 'communities.show.ideas'}}</a>{{/link-to}}
   {{#link-to 'community.praises' communitySlug 1 tagName="li" class=praiseClass}}<a href="{{view.href}}">{{t 'communities.show.praises'}}</a>{{/link-to}}
   {{#link-to 'community.announcements' communitySlug 1 tagName="li" class=announcementClass}}<a href="{{view.href}}">{{t 'communities.show.announcements'}}</a>{{/link-to}}
+{{/if}}
 </ul>
 
 {{#if anyItems}}

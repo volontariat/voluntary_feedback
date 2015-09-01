@@ -1,0 +1,1 @@
+Volontariat.CommunityCategoryController = Volontariat.Controller.extend(Volontariat.CommunityCategoryPersistence)

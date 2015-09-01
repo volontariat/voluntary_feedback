@@ -1,0 +1,11 @@
+<h2>
+  {{model.name}}
+  {{#link-to 'community.edit_category' model.slug}}
+    <span class="glyphicon glyphicon-pencil"></span>
+  {{/link-to}}
+  <a {{action 'destroy' model.slug}}>
+    <span class="glyphicon glyphicon-remove"></span>
+  </a>
+</h2>
+
+{{outlet}}

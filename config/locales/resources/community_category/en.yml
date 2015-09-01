@@ -1,0 +1,26 @@
+en:
+  community_categories:
+    index:
+      title: Categories
+      empty_collection: No categories found.
+    new:
+      title: New Category
+    edit:
+      title: Edit Category
+    save:
+      failed: Something went wrong at saving category
+      successful: Successfully saved category.
+    create:
+      title: Create Category
+    update:
+      title: Update Category
+    destroy:
+      confirmation: Do you really want to remove this category?
+        
+  activerecord:
+    errors:
+      models:
+        community_category:
+          attributes:
+            base: 
+              deletion_failed: Category could not be deleted!

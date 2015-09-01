@@ -6,6 +6,19 @@ Volontariat.Router.map ->
   @route 'communities', path: '/communities/page/:page'
   
   @resource 'community', path: '/communities/:slug', ->
+    @route 'categories', path: 'categories/page/:page'
+    
+    @route 'category', path: 'categories/:category_slug', ->
+      @route 'feedbacks', path: 'feedbacks/page/:page'
+      @route 'problems', path: 'problems/page/:page'
+      @route 'questions', path: 'questions/page/:page'
+      @route 'ideas', path: 'ideas/page/:page'
+      @route 'praises', path: 'praises/page/:page'
+      @route 'announcements', path: 'announcements/page/:page'
+  
+    @route 'new_category', path: 'categories/new'
+    @route 'edit_category', path: 'categories/:category_slug/edit'
+    
     @route 'feedbacks', path: 'feedbacks/page/:page'
     @route 'problems', path: 'problems/page/:page'
     @route 'questions', path: 'questions/page/:page'
