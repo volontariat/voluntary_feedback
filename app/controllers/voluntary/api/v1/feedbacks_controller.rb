@@ -42,12 +42,7 @@ class Voluntary::Api::V1::FeedbacksController < ActionController::Base
     resource = Community.friendly.find(params[:feedback][:community_slug]).feedbacks.new params[:feedback]
     resource.user_id = current_user.id
     resource.save
-    
-    if resource.persisted?
-      params[:feedback][:category_ids].each do |category_id|
-        resource.categories << CommunityCategory.find(category_id)
-      end
-    end
+    resource.category_ids = params[:feedback][:category_ids] || [] if resource.persisted?
     
     respond_to do |format|
       format.json do
@@ -58,24 +53,12 @@ class Voluntary::Api::V1::FeedbacksController < ActionController::Base
   
   def update
     resource = Community.friendly.find(params[:feedback][:community_slug]).feedbacks.friendly.find(params[:id])
+    
+    raise CanCan::AccessDenied unless resource.user_id == current_user.id
+    
     resource.update_attributes params[:feedback]
-    
-    if resource.valid?
-      params[:feedback][:category_ids] ||= []
-      
-      resource.categories.select{|c| !params[:feedback][:category_ids].map(&:to_i).include?(c.id)}.each do |category|
-        resource.categories.delete category
-      end
-      
-      categories = resource.categories.where('community_categories.id IN(?)', params[:feedback][:category_ids])
-      
-      params[:feedback][:category_ids].each do |category_id|
-        next if categories.map(&:id).include? category_id.to_i
-          
-        resource.categories << CommunityCategory.find(category_id)
-      end
-    end
-    
+    resource.category_ids = params[:feedback][:category_ids] || [] if resource.valid?
+
     respond_to do |format|
       format.json do
         render json: resource.valid? ? resource : { errors: resource.errors.to_hash }
