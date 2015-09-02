@@ -10,14 +10,15 @@ Gem::Specification.new do |s|
   s.authors     = ['Mathias Gawlista']
   s.email       = ['gawlista@gmail.com']
   s.homepage    = 'http://Voluntary.Software'
-  s.summary     = 'Draft: plugin for crowdsourcing management system voluntary where users can post feedback like commentable and voteable questions, problems, praise and ideas to a project.'
-  s.description = '#Ruby on #Rails plugin for Voluntary.Software about user feedback for a product.'
+  s.summary     = 'Plugin for crowdsourcing management system voluntary where users can post feedback like questions, problems, praise and ideas to a community.'
+  s.description = 'Feedback plugin for #Crowdsourcing gem voluntary: http://bit.ly/vf-0-1-0'
   s.license     = 'MIT'
 
-  s.files = Dir['{app,config,db,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'README.md']
+  s.files = Dir['{app,config,db,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'README.md', 'CHANGELOG.md']
 
-  s.add_dependency 'voluntary', '~> 0.5.1'
-
+  s.add_dependency 'voluntary', '~> 0.5.2'
+  s.add_dependency 'voluntary-ember_js', '~> 0.0.3'
+  
   # group :development
   
   s.add_development_dependency 'letter_opener', '~> 1.0.0'
