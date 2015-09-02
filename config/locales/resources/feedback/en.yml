@@ -38,4 +38,5 @@ en:
         feedback:
           attributes:
             base: 
+              announcement_only_for_organization_owner: Announcements are only for community owner.
               deletion_failed: Feedback could not be deleted!

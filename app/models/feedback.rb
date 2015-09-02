@@ -18,10 +18,37 @@ class Feedback < ActiveRecord::Base
   validates :name, presence: true, uniqueness: { scope: :community_id }
   validates :text, presence: true
   validates :user_id, presence: true
+  validate :announcement_only_for_organization_owner, if: 'feedback_type == "Announcement"'
   
   friendly_id :name, use: :scoped, scope: :community
   
   attr_accessible :community_id, :feedback_type, :name, :text, :mood_type, :mood_text
   
   attr_accessor :positive
+  
+  def category_ids=(ids)
+    categories.select{|c| !ids.map(&:to_i).include?(c.id)}.each do |category|
+      categories.delete category
+    end
+    
+    category_ids = categories.where('community_categories.id IN(?)', ids).map(&:id)
+    
+    ids.each do |category_id|
+      next if category_ids.include? category_id.to_i
+        
+      categories << CommunityCategory.find(category_id)
+    end
+  end
+  
+  private
+  
+  def announcement_only_for_organization_owner
+    unless community.organization.user_id == user_id
+      errors[:base] << I18n.t('activerecord.errors.models.feedback.attributes.base.announcement_only_for_organization_owner')
+    end
+  end
+  
+  def should_generate_new_friendly_id?
+    slug.blank? || name_changed?
+  end
 end
