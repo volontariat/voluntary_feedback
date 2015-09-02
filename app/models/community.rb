@@ -12,4 +12,10 @@ class Community < ActiveRecord::Base
   friendly_id :name, use: :slugged
   
   attr_accessible :organization_id, :name, :text
+  
+  private
+  
+  def should_generate_new_friendly_id?
+    slug.blank? || name_changed?
+  end
 end
