@@ -9,9 +9,9 @@ GIT
 
 GIT
   remote: git://github.com/volontariat/voluntary-ember_js.git
-  revision: 0e3e6515b5e1622a8ceb9408069b41913c49262f
+  revision: 3dc06d672860165b9129a9a07f73cab051d661f7
   specs:
-    voluntary-ember_js (0.0.2)
+    voluntary-ember_js (0.0.3)
       ember-data-source (= 1.13.8)
       ember-rails (~> 0.19.0)
       ember-source (= 1.13.8)
@@ -19,9 +19,9 @@ GIT
 
 GIT
   remote: git://github.com/volontariat/voluntary.git
-  revision: b2505c8bbbcbbe9f50605a524bb2b4a2621f635d
+  revision: 6883360844466520f40210a03faee09662bd9fb0
   specs:
-    voluntary (0.5.1)
+    voluntary (0.5.2)
       active_model_serializers (~> 0.9.3)
       activerecord-deprecated_finders (~> 1.0.3)
       activerecord-import (~> 0.4.1)
@@ -107,8 +107,9 @@ GIT
 PATH
   remote: /Users/gawlim/workspace/voluntary/voluntary_feedback
   specs:
-    voluntary_feedback (0.0.1)
-      voluntary (~> 0.5.1)
+    voluntary_feedback (0.1.0)
+      voluntary (~> 0.5.2)
+      voluntary-ember_js (~> 0.0.3)
 
 GEM
   remote: http://gems.github.com/
@@ -472,7 +473,7 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     rake (10.4.2)
-    rb-fsevent (0.9.5)
+    rb-fsevent (0.9.6)
     rb-inotify (0.9.5)
       ffi (>= 0.5.0)
     rb-kqueue (0.2.4)
@@ -528,7 +529,7 @@ GEM
     simple-navigation-bootstrap (1.0.2)
       railties (>= 3.1)
       simple-navigation (>= 3.7.0, < 4.0.0)
-    simple_form (3.1.0)
+    simple_form (3.1.1)
       actionpack (~> 4.0)
       activemodel (~> 4.0)
     simplecov (0.7.1)
@@ -549,7 +550,7 @@ GEM
       spring (>= 0.9.1)
     spring-commands-rspec (1.0.4)
       spring (>= 0.9.1)
-    sprockets (3.3.3)
+    sprockets (3.3.4)
       rack (~> 1.0)
     sprockets-rails (2.3.2)
       actionpack (>= 3.0)

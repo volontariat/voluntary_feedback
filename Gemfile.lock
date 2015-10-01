@@ -108,7 +108,7 @@ PATH
   remote: .
   specs:
     voluntary_feedback (0.1.0)
-      voluntary (~> 0.5.2)
+      voluntary (~> 0.5)
       voluntary-ember_js (~> 0.0.3)
 
 GEM
