@@ -15,6 +15,8 @@ Volontariat.CommunityFeedbacksRoute = Ember.Route.extend
     if @get('routeName').split('.').length == 3
       categorySlug = if @modelFor('community.category') then @modelFor('community.category').slug else null
       @controllerFor('community.feedbacks').set 'categorySlug', categorySlug
+    else
+      @controllerFor('community.feedbacks').set 'categorySlug', null
       
     if feedbackType == 'feedbacks'
       @store.query 'feedback', community_slug: @modelFor('community').slug, category_slug: categorySlug, page: params.page
