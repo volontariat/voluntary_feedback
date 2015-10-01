@@ -7,7 +7,7 @@ class Feedback < ActiveRecord::Base
   
   has_many :community_category_feedbacks
   has_many :categories, class_name: 'CommunityCategory', through: :community_category_feedbacks
-  has_many :replies
+  has_many :replies, dependent: :destroy
   
   scope :for_category, ->(community_id, category_slug) do
     category_id = Community.find(community_id).categories.friendly.find(category_slug).id

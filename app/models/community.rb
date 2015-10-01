@@ -3,8 +3,8 @@ class Community < ActiveRecord::Base
   
   belongs_to :organization
   
-  has_many :categories, class_name: 'CommunityCategory'
-  has_many :feedbacks
+  has_many :categories, class_name: 'CommunityCategory', dependent: :destroy
+  has_many :feedbacks, dependent: :destroy
   
   validates :organization_id, presence: true
   validates :name, presence: true, uniqueness: true
