@@ -14,8 +14,6 @@ Volontariat.PaginationController = Em.Mixin.create
       
     if @get('metadata')
       @set 'totalPages', @get('metadata').pagination.total_pages
-    else if @store.metadataFor(@get('paginationResource')).pagination
-      @set 'totalPages', @store.metadataFor(@get('paginationResource')).pagination.total_pages
     else
       @set 'totalPages', 1
       
@@ -43,6 +41,8 @@ Volontariat.PaginationController = Em.Mixin.create
       @_goToPage(page)
 
       switch @get('paginationRoute')
+        when 'communities'
+          @transitionToRoute @get('paginationRoute'), page
         when 'community.categories'
           @transitionToRoute @get('paginationRoute'), @get('communitySlug'), page
         when 'community.feedbacks', 'community.problems', 'community.questions', 'community.ideas', 'community.praises', 'community.announcements'

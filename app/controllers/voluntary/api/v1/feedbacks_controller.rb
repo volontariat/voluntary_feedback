@@ -10,7 +10,7 @@ class Voluntary::Api::V1::FeedbacksController < ActionController::Base
     collection = community.feedbacks.includes(:user)
     collection = collection.for_category(community.id, params[:category_slug]) if params[:category_slug].present?
     collection = collection.where(feedback_type: params[:feedback_type]) if params[:feedback_type].present?
-    options[:json] = collection.paginate page: params[:page], per_page: 10
+    options[:json] = collection.order('feedbacks.created_at DESC').paginate page: params[:page], per_page: 10
     
     options[:meta] = { 
       pagination: {

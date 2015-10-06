@@ -1,4 +1,6 @@
-Ember.Handlebars.helper 'mood-icon', (index, options) ->
+Volontariat.MoodIconHelper = Ember.Helper.helper((params) ->
+  index = params[0]
+  
   if index == 0
     new (Ember.Handlebars.SafeString)('<img src="http://twemoji.maxcdn.com/72x72/1f600.png" style="width:16px; height:16px;"/>')
   else if index == 1
@@ -9,3 +11,4 @@ Ember.Handlebars.helper 'mood-icon', (index, options) ->
     new (Ember.Handlebars.SafeString)('<img src="http://twemoji.maxcdn.com/72x72/1f61f.png" style="width:16px; height:16px;"/>')
   else
     '-'
+)

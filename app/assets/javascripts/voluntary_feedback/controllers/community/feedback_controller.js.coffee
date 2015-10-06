@@ -1,5 +1,5 @@
 Volontariat.CommunityFeedbackController = Volontariat.Controller.extend(Volontariat.PaginationController, Volontariat.FeedbackPersistence,
-  paginationRoute: 'community.feedback', paginationResource: 'reply', replies: [], newReplyMode: false
+  paginationRoute: 'community.feedback', replies: [], newReplyMode: false
   anyReplies: (-> @get('replies.length') > 0).property('replies')
   feedbackTypeRoute: (-> "community.#{@get('feedbackType').pluralize().toLowerCase()}").property('feedbackType')
   

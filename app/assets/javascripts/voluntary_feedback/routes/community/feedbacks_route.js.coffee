@@ -19,9 +19,13 @@ Volontariat.CommunityFeedbacksRoute = Ember.Route.extend
       @controllerFor('community.feedbacks').set 'categorySlug', null
       
     if feedbackType == 'feedbacks'
-      @store.query 'feedback', community_slug: @modelFor('community').slug, category_slug: categorySlug, page: params.page
+      @store.query('feedback', community_slug: @modelFor('community').slug, category_slug: categorySlug, page: params.page).then (result) =>
+        @controllerFor('community.feedbacks').set 'metadata', result.get('meta')
+        result
     else
-      @store.query 'feedback', community_slug: @modelFor('community').slug, category_slug: categorySlug, feedback_type: feedbackType.singularize().capitalize(), page: params.page
+      @store.query('feedback', community_slug: @modelFor('community').slug, category_slug: categorySlug, feedback_type: feedbackType.singularize().capitalize(), page: params.page).then (result) =>
+        @controllerFor('community.feedbacks').set 'metadata', result.get('meta')
+        result
       
   setupController: (controller, model) ->
     controller.send('goToPageWithoutRedirect', controller.get('page'))
