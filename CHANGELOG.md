@@ -1,5 +1,7 @@
 ## unreleased ##
 
+* [#11](https://github.com/volontariat/voluntary_feedback/issues/11) Ember.js 2.0 upgrade.
+
 ## 0.1.0 (September 2, 2015) ##
 
 * [#10](https://github.com/volontariat/voluntary_feedback/issues/10) Reply on reply.
